@@ -4,7 +4,7 @@ html, body {
 
 	max-width:375px;
 	margin:0;
-	background:#fff;
+	background:#000;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	overflow:hidden;
 }
@@ -22,12 +22,22 @@ html, body {
             
 	/*apply a transform to kick in the hardware acceleration.  Without this, the first
 	time we add the transform you get odd rendering of the divs (half missing) */
-	-webkit-transform: translate(0, 0);
-
+	/*-webkit-transform: translate(0, 0);
+	background-color:#000;*/
 	-webkit-transform: translate(0px, 0px);
-	-webkit-transition: -webkit-transform 1s linear;
-}
 
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-transition: -webkit-transform 0.4s linear;
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+#cards .card, #favorites .card {
+/*
+	-webkit-transform: translate(0px, 0px);
+	-webkit-transition: -webkit-transform 0.4s linear;
+	-webkit-transform: translate3d(0, 0, 0);*/
+
+	}
 #cards img, #cards .card, #favorites .card {
 	float: left;
 	padding: 0;
@@ -38,8 +48,6 @@ html, body {
 	time we add the transform you get odd rendering of the divs (half missing) */
 	transform: translate(0, 0);
 
-	-webkit-transform: translate(0px, 0px);
-	-webkit-transition: -webkit-transform 1s linear;
 
 	background-size: contain;
 	cursor: pointer;
@@ -47,7 +55,7 @@ html, body {
 	z-index:9;
 	background-color:#000;
 
-	margin-right:5px; overflow:hidden;
+	margin-right:0px; overflow:hidden;
 }
 
 
@@ -71,4 +79,21 @@ html, body {
 .liked:hover,
 .liked.active {
 	background:url(../imgs/liked_yellow.svg) no-repeat;
+}
+
+.successcopy {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:375px;
+	background:#fab60b;
+	line-height:25px;
+	height:25px;
+	z-index:999;
+	bottom:-99px;
+	text-align: center;
+	 -webkit-transition: all 0.4s ease;
+	 -moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
 }
