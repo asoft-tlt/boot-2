@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-
+<meta charset="utf-8">
 		<link rel="stylesheet" href="css/style.css">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 				<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
@@ -37,6 +37,7 @@
 				cards = $("#cards");
 				favor = $("#favorites");
 				content = $("#content");
+				$('.liked').click(function(){$(this).toggleClass('active');});
 				//cards.swipe(swipeOptions);
 				//favor.swipe(swipeOptions2);
 			});
@@ -394,38 +395,68 @@
 		<div class="successcopy" id="successcopy">text copied
 		</div>
 
-		<script>
-			var clipboard = new Clipboard('.card');
-			clipboard.on('success', function(e) {
-			    $('#successcopy').css('bottom','0');
-			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
-			});
-		</script>
+
 
 		<script type="text/javascript" src="js/hammer.js"></script>
 
 		
  <script>
+ //active
+ 
 var myElement=document.querySelector("body");
 var mc = new Hammer(myElement);
 
 mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-
+mc.get('press').set({ time: 2000 });
 mc.on("swiperight", function(ev) {
  previousImage(); 
 });
 mc.on("swipeleft", function(ev) {
   nextImage();
 });
-mc.on("swipedown", function(ev) {
+ 
+mc.on('press', function(ev) {
+var element=ev.target.offsetParent;
+var txt=element.getAttribute('data-clipboard-text');
+//console.log(txt);
+succeeded=copy(txt);
+if(succeeded){
+  $('#successcopy').css('bottom','0');
+   setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
+}
+
+	
+});
+
+/*mc.on("swipedown", function(ev) {
 tomain();
 });
 mc.on("swipeup", function(ev) {
  tofav();
-});
-
+});*/
+/*function copy(str){
+var tmp   = document.createElement('INPUT'), // Создаём новый текстовой input
+  focus = document.activeElement; // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
+  tmp.value = str; // Временному input вставляем текст для копирования
+  document.body.appendChild(tmp); // Вставляем input в DOM
+  tmp.select(); // Выделяем весь текст в input
+   try {
+   succeeded = document.execCommand(this.copy); // Магия! Копирует в буфер выделенный текст (см. команду выше)
+     } catch (err) {
+  succeeded = false;
+  }
+  document.body.removeChild(tmp); // Удаляем временный input
+  focus.focus(); // Возвращаем фокус туда, где был
+  return succeeded; //возвращаем удачно ли скопировалось
+}*/
     </script>
-
+		<script>
+				var clipboard = new Clipboard('.card');
+			clipboard.on('success', function(e) {
+			    $('#successcopy').css('bottom','0');
+			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
+			});	
+		</script>
 
 	</body>
 </html>
