@@ -11,7 +11,7 @@ Bootlicker
 <icon src="icon.png" />
 <content src="index.html" />
 <access origin="*" />
-<preference name="phonegap-version" value="5.2.0" />
+<preference name="phonegap-version" value="6.5.0" />
 <gap:plugin name="org.apache.cordova.file" source="pgb" version="1.3.3" />
 
 
