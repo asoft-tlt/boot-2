@@ -1,4 +1,4 @@
-<html>
+﻿<html style="background:#000;">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 <meta charset="utf-8">
@@ -407,7 +407,8 @@ var myElement=document.querySelector("body");
 var mc = new Hammer(myElement);
 
 mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
-mc.get('press').set({ time: 2000 });
+mc.get('tap').set({ time: 8000 });
+mc.get('press').set({ time: 2100 });
 mc.on("swiperight", function(ev) {
  previousImage(); 
 });
@@ -415,47 +416,85 @@ mc.on("swipeleft", function(ev) {
   nextImage();
 });
  
-mc.on('press', function(ev) {
+mc.on('tap', function(ev) {
+
+if(ev.deltaTime>2000){
 var element=ev.target.offsetParent;
 var txt=element.getAttribute('data-clipboard-text');
-//console.log(txt);
-succeeded=copy(txt);
+
+//succeeded=copy(txt);
+succeeded=CopyToClipboard(txt);
 if(succeeded){
-  $('#successcopy').css('bottom','0');
-   setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
+console.log('copy');
 }
 
-	
+}	
 });
-
+mc.on('press', function(ev) {
+  $('#successcopy').css('bottom','0');
+   setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
+});
 /*mc.on("swipedown", function(ev) {
 tomain();
 });
 mc.on("swipeup", function(ev) {
  tofav();
 });*/
-/*function copy(str){
-var tmp   = document.createElement('INPUT'), // Создаём новый текстовой input
-  focus = document.activeElement; // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
-  tmp.value = str; // Временному input вставляем текст для копирования
-  document.body.appendChild(tmp); // Вставляем input в DOM
-  tmp.select(); // Выделяем весь текст в input
+function copy(str){
+
+var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+ focus = document.activeElement; 
+var fakeElem   = document.createElement('textarea');
+fakeElem.style.fontSize = '12pt';
+fakeElem.style.border = '0';
+fakeElem.style.padding = '0';
+fakeElem.style.margin = '0';
+fakeElem.style.position = 'absolute';
+fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
+ var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+fakeElem.addEventListener('focus', window.scrollTo(0, yPosition));
+fakeElem.style.top = yPosition + 'px';
+fakeElem.value = str;
+fakeElem.setAttribute('readonly', '');
+ document.body.appendChild(fakeElem);
+ fakeElem.focus(); 
+  fakeElem.select();
    try {
-   succeeded = document.execCommand(this.copy); // Магия! Копирует в буфер выделенный текст (см. команду выше)
+   succeeded = document.execCommand('copy'); 
      } catch (err) {
   succeeded = false;
   }
-  document.body.removeChild(tmp); // Удаляем временный input
-  focus.focus(); // Возвращаем фокус туда, где был
+
   return succeeded; //возвращаем удачно ли скопировалось
-}*/
+}
+
+function CopyToClipboard (str) {
+
+var textToCb = str;
+var flag = true;
+
+          if (window.clipboardData) {
+                  window.clipboardData.setData ("Text", textToCb);
+				  alert(textToCb);
+               }
+         else {
+		 flag=copy(textToCb);
+       }
+return flag;
+ }
+ 
+
+
+
+
+
     </script>
 		<script>
-				var clipboard = new Clipboard('.card');
+		/*		var clipboard = new Clipboard('.card');
 			clipboard.on('success', function(e) {
 			    $('#successcopy').css('bottom','0');
 			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
-			});	
+			});	*/
 		</script>
 
 	</body>
