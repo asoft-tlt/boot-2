@@ -5,13 +5,16 @@
 <description>
 Bootlicker
 </description>
+<platform name="ios">
+<splash src="splash.png" platform="ios" width="375" height="667" />
+<icon src="iconios.png" platform="ios" width="180" height="180" />
+</platform>
 <author email="info@seotlt.ru" href="http://seotlt.ru">
     Me
 </author>
 <icon src="icon.png" />
 <content src="index.html" />
 <access origin="*" />
-<splash src="splash.png" platform="ios" width="375" height="667" />
-<icon src="iconios.png" platform="ios" width="180" height="180" />
+
 
 </widget>
