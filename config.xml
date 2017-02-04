@@ -11,6 +11,6 @@ Bootlicker
 <icon src="icon.png" />
 <content src="index.html" />
 <access origin="*" />
-
+<splash src="splash.png" platform="ios" width="375" height="667" />
 
 </widget>
