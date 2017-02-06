@@ -84,11 +84,13 @@ html, body {
 .successcopy {
 	position:absolute;
 	bottom:0;
-	left:0;
-	width:375px;
-	background:#fab60b;
-	line-height:25px;
-	height:25px;
+	left:50%;
+	margin-left:-85px;
+	width:190px;
+	background:#c6c6c6;
+	line-height:68px;
+	border-radius:10px;
+	height:68px;
 	z-index:999;
 	bottom:-99px;
 	text-align: center;
