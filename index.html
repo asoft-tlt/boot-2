@@ -40,6 +40,7 @@
 				$('.liked').click(function(){$(this).toggleClass('active');});
 				//cards.swipe(swipeOptions);
 				//favor.swipe(swipeOptions2);
+				//$('.gif img').SuperGif({'auto_play', '1'});
 			});
 
 			function swipeStatus(event, phase, direction, distance) {
@@ -110,6 +111,7 @@
 				if(currentImg != maxImages-1) {
               				currentImg = Math.min(currentImg + 1, maxImages - 1);
 			                scrollImages(IMG_WIDTH * currentImg, speed);
+						
 			        } 
 		        }
 
@@ -121,7 +123,11 @@
             			var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
 			        cards.css("-webkit-transform", "translate3d(" + value + "px,0,0)");
 				  	cards.css("-webkit-transition", "-webkit-transform 0.4s linear");
-			
+					var date = new Date();
+					$('.gif img').each( function() {
+					var val=$(this).attr("src");///+"?"+date.getTime();
+					$(this).attr("src",val);
+						});
 				
 		        }
 
@@ -154,19 +160,19 @@
 	<body>
 		<div id="content" >
 			<div id="cards">
-				<div class="card" id="1" style="position:relative;" data-clipboard-text="С тобой я чувствую себя работником музей, все время созерцаю произведение искусства.">
+				<div class="card" id="1" style="position:relative;" data-clipboard-text="С тобой я чувствую себя работником музей, все время созерцаю произведение искусстка.">
 					<a href="#" class="liked"></a>
-					<div class="gif" style="position:absolute;top:-30;right:-25;width:170px;height:303px;z-index:2;"> <img src="video/1R.gif" loop /> </div>
+					<div class="gif" style="position:absolute;top:-30;right:-25;width:170px;height:303px;z-index:2;"> <img src="video/1R.gif"  loop /> </div>
 					<div class="gif" style="position:absolute;bottom:25px;left:-25;width:170px;height:303px;z-index:2;"> <img src="video/1L.gif" loop /> </div>
 					<div style="position:absolute;top:10px;bottom:0;left:0;right:0;;z-index:3;background-image:url(imgs/cards/1.png);background-size:100%;"></div>
 				</div>
 				<div class="card" id="2" style="position:relative;" data-clipboard-text="Слушай, я хочу тебя почти так же как мира во всем мире. Если бы родился котом, провел бы с тобой все девять жизней.">
 					<a href="#" class="liked"></a>
-					<div class="gif" style="position:absolute;top:25px;right:25px;width:140px;height:250px;z-index:2;"> <img src="video/2R.gif" loop /> </div>
+					<div class="gif" style="position:absolute;top:25px;right:25px;width:140px;height:250px;z-index:2;"> <img src="video/2R.gif"  loop  /> </div>
 					<div class="gif" style="position:absolute;bottom:20px;left:25px;width:140px;height:250px;z-index:2;"> <img src="video/2L.gif" loop /> </div>
 					<div style="position:absolute;top:10px;bottom:0;left:0;right:0;;z-index:3;background-image:url(imgs/cards/2.png);background-size:100%;"></div>
 				</div>
-				<div class="card" id="3" style="position:relative;" data-clipboard-text="Миллионы женщин покупают тонны косметики, совершают пластические операции. И все ради чего? Они мечтают хотя бы на йоту приблизиться к тому образу, который тебе достался в награду за красивую душу.">
+				<div class="card" id="3" style="position:relative;" data-clipboard-text="Миллионы женщин покупают тонны косметики, совершают пластические операции. И все ради чего? Они мечтают хотя бы на йоту приблизиться к тому образу, который тебе достался в ноаграду за красивую душу.">
 					<a href="#" class="liked"></a>
 					<div class="gif" style="position:absolute;top:-45px;right:-20px;width:170px;height:303px;z-index:2;"> <img src="video/3R.gif" loop /> </div>
 					<div class="gif" style="position:absolute;bottom:-5px;left:-35px;width:170px;height:303px;z-index:2;"> <img src="video/3L.gif" loop /> </div>
@@ -415,7 +421,7 @@ mc.on("swiperight", function(ev) {
 mc.on("swipeleft", function(ev) {
   nextImage();
 });
- 
+ /*
 mc.on('tap', function(ev) {
 
 if(ev.deltaTime>2000){
@@ -430,19 +436,17 @@ console.log('copy');
 
 }	
 });
-/*
 mc.on('press', function(ev) {
   $('#successcopy').css('bottom','0');
    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
-});
-*/
+});*/
 /*mc.on("swipedown", function(ev) {
 tomain();
 });
 mc.on("swipeup", function(ev) {
  tofav();
 });*/
-function copy(str){
+/*function copy(str){
 
 var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
  focus = document.activeElement; 
@@ -484,7 +488,7 @@ var flag = true;
        }
 return flag;
  }
- 
+ */
 
 
 
