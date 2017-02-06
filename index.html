@@ -37,7 +37,7 @@
 				cards = $("#cards");
 				favor = $("#favorites");
 				content = $("#content");
-				$('.liked').click(function(){$(this).toggleClass('active');});
+				$('.liked').click(function(event){$(this).toggleClass('active');  event.stopPropagation(); return false;});
 				//cards.swipe(swipeOptions);
 				//favor.swipe(swipeOptions2);
 				//$('.gif img').SuperGif({'auto_play', '1'});
@@ -398,7 +398,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="successcopy" id="successcopy">text copied
+		<div class="successcopy" id="successcopy">Текст скопирован
 		</div>
 
 
@@ -498,7 +498,7 @@ return flag;
 		<script>
 				var clipboard = new Clipboard('.card');
 			clipboard.on('success', function(e) {
-			    $('#successcopy').css('bottom','0');
+			    $('#successcopy').css('bottom','68px');
 			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
 			});	
 		</script>
