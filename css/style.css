@@ -76,7 +76,7 @@ html, body {
 	background:url(../imgs/liked.svg) no-repeat;
 	z-index:9;
 }
-.liked:hover,
+
 .liked.active {
 	background:url(../imgs/liked_yellow.svg) no-repeat;
 }
