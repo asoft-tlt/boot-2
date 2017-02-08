@@ -58,27 +58,26 @@ html, body {
 	margin-right:0px; overflow:hidden;
 }
 
-
+/*
 #card1:after {	
 	content:"";
 	position:absolute;top:0;right:0;width:175px;height:250px;z-index:2;
 	background:url(http://savvy-club.com/2/video/2_r.gif) no-repeat;
 }
-
+*/
 .liked {
-	width:150px;
-	height:90px;
+	width:49px;
+	height:49px;
 	position:absolute;
-	left:50%;
-	margin-left:-75px;
-	top:65px;
+	right:55px;
+	bottom:55px;
 	display:inline-block;
-	background:url(../imgs/liked.svg) no-repeat;
+	background:url(../imgs/fav.svg) no-repeat;
 	z-index:9;
 }
 
 .liked.active {
-	background:url(../imgs/liked_yellow.svg) no-repeat;
+	background:url(../imgs/fava.svg) no-repeat;
 }
 
 .successcopy {
