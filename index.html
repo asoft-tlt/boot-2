@@ -506,8 +506,8 @@ mc.on('press', function(ev) {
 		<script>
 			var clipboard = new Clipboard('.card');
 	clipboard.on('success', function(e) {
-			    $('#successcopy').css('bottom','0');
-			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
+			    $('#successcopy').css('bottom','1');
+			    setTimeout(function(){$('#successcopy').css('opacity','0')}, 2000);
 			});	
 		</script>
 
