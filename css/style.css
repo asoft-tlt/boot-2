@@ -90,6 +90,9 @@ html, body {
 	background:url(../imgs/copyico.svg) no-repeat;
 	z-index:9;
 }
+.copyico.active {
+	background:url(../imgs/copyicoa.svg) no-repeat;
+}
 
 .successcopy {
 	position:absolute;
