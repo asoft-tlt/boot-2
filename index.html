@@ -487,8 +487,9 @@ mc.on('press', function(ev) {
 
     </script>
 		<script>
-			var clipboard = new Clipboard('.card');
+			var clipboard = new Clipboard('.copyico');
 	clipboard.on('success', function(e) {
+		$(this).addClass("active"); 
 			    //$('#successcopy').css('opacity','1');
 			    //setTimeout(function(){$('#successcopy').css('opacity','0')}, 2000);
 			});	
