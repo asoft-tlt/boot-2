@@ -31,9 +31,8 @@
   <plugin name="phonegap-plugin-barcodescanner" source="npm"/>
   <plugin name="cordova-plugin-x-toast" />
  
-</widget>
-
 <platform name="ios">    
 <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
 </platform>
 <splash src="splash.png" />
+</widget>
