@@ -34,5 +34,4 @@
 <platform name="ios">    
 <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
 </platform>
-<splash src="splash.png" />
 </widget>
