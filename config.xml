@@ -30,8 +30,11 @@
   <plugin name="cordova-universal-clipboard" source="npm"/>
   <plugin name="phonegap-plugin-barcodescanner" source="npm"/>
   <plugin name="cordova-plugin-x-toast" />
+  <plugin name="cordova-plugin-splashscreen" source="npm" />
  
 <platform name="ios">    
 <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
 </platform>
+<splash src="splash.png" />
+
 </widget>
