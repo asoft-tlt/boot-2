@@ -23,9 +23,6 @@
   <preference name="android-build-tool" value="gradle" />  
  
   <plugin name="cordova-plugin-whitelist" source="npm" />
-  <plugin name="cordova-plugin-x-socialsharing" source="npm" />
-  <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-  <plugin spec="https://github.com/floatinghotpot/cordova-admob-pro" source="git" />
   <plugin name="cordova-plugin-network-information" source="npm" />
   <plugin name="cordova-universal-clipboard" source="npm"/>
   <plugin name="phonegap-plugin-barcodescanner" source="npm"/>
@@ -35,6 +32,5 @@
 <platform name="ios">    
 <splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
 </platform>
-<splash src="splash.png" />
 
 </widget>
