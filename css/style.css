@@ -89,6 +89,7 @@ html, body {
 	display:inline-block;
 	background:url(../imgs/copyico.svg) no-repeat;
 	z-index:9;
+	opacity:0;
 }
 .copyico.active {
 	background:url(../imgs/copyicoa.svg) no-repeat;
