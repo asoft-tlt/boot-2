@@ -38,7 +38,14 @@
 				favor = $("#favorites");
 				content = $("#content");
 				$('.liked').click(function(event){$(this).toggleClass('active');  event.stopPropagation(); return false;});
-				
+				$('.copyico').click(function(event){
+					$(this).toggleClass('active'); 
+					setTimeout(function(){$(this).removeClass('active')}, 2000);
+					$(this).parents('.card').click();
+					event.stopPropagation(); return false;}
+				);
+
+
 				//cards.swipe(swipeOptions);
 				//favor.swipe(swipeOptions2);
 				//$('.gif img').SuperGif({'auto_play', '1'});
@@ -485,8 +492,8 @@ mc.on('press', function(ev) {
 		$(this).addClass("active"); 
 			   // $('.copyico').css('opacity','1');		
 			   // setTimeout(function(){$('.copyico').css('opacity','0')}, 2000);
-		$('.copyico').addClass("active"); 
-		setTimeout(function(){$('.copyico').removeClass('active')}, 2000);
+		//$('.copyico').addClass("active"); 
+		//setTimeout(function(){$('.copyico').removeClass('active')}, 2000);
 			});	
 		</script>
 
