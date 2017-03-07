@@ -483,8 +483,10 @@ mc.on('press', function(ev) {
 			var clipboard = new Clipboard('.card');
 	clipboard.on('success', function(e) {
 		$(this).addClass("active"); 
-			    $('.copyico').css('opacity','1');
-			    setTimeout(function(){$('.copyico').css('opacity','0')}, 2000);
+			   // $('.copyico').css('opacity','1');		
+			   // setTimeout(function(){$('.copyico').css('opacity','0')}, 2000);
+		$('.copyico').addClass("active"); 
+		setTimeout(function(){$('.copyico').removeClass('active')}, 2000);
 			});	
 		</script>
 
