@@ -1,4 +1,4 @@
-﻿<html style="background:#000;">
+<html style="background:#000;">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 <meta charset="utf-8">
@@ -20,19 +20,6 @@
 			var videoon = 0;		        
 			var timer;
 			var sup;
-			/*var swipeOptions = {
-				triggerOnTouchEnd: true,
-				swipeStatus: swipeStatus,
-				allowPageScroll: "vertical",
-				threshold: 75
-			};
-			var swipeOptions2 = {
-				triggerOnTouchEnd: true,
-				swipeStatus: swipeStatus2,
-				allowPageScroll: "vertical",
-				threshold: 75
-			};*/
-
 			$(function () {  
 				cards = $("#cards");
 				favor = $("#favorites");
@@ -40,21 +27,15 @@
 				$('.liked').click(function(event){$(this).toggleClass('active');  event.stopPropagation(); return false;});
 				$('.copyico').click(function(event){
 					$(this).toggleClass('active'); 
-					setTimeout(function(){$(this).removeClass('active')}, 2000);
 					$(this).parents('.card').click();
-					event.stopPropagation(); return false;}
-				);
-
-
-				//cards.swipe(swipeOptions);
-				//favor.swipe(swipeOptions2);
-				//$('.gif img').SuperGif({'auto_play', '1'});
+					setTimeout(function(){$('.copyico.active').removeClass('active')}, 1500);
+					event.stopPropagation(); 
+					return false;
+				});
 			});
-
 			function swipeStatus(event, phase, direction, distance) {
 				if (phase == "move" && (direction == "left" || direction == "right" || direction == "up" || direction == "down")) {
 					var duration = 0;
-
                 			if (direction == "left") {
                     				if (currentImg != maxImages-1) {
                     					scrollImages((IMG_WIDTH * currentImg) + distance, duration); 
@@ -72,9 +53,6 @@
 							return false;
 						}
                				} 
-
-
-
 			        } else if (phase == "cancel") {
 			                scrollImages(IMG_WIDTH * currentImg, speed);
 			        } else if (phase == "end") {
@@ -87,7 +65,6 @@
 			                }
 			        }
 			 }
-
 			function swipeStatus2(event, phase, direction, distance) {          
 				if (phase == "move" && (direction == "down")) {
 					var duration = 0;
@@ -96,7 +73,6 @@
 				                    scrollImages2(0 - distance, duration);
 						}
                				} 
-
 			        } else if (phase == "cancel") {
 			                scrollImages2(0, speed);
 			        } else if (phase == "end") {
@@ -105,16 +81,10 @@
 			                }
 			        }
 			 }
-
-
-
-
 			function previousImage() {
 				currentImg = Math.max(currentImg - 1, 0);
 				scrollImages(IMG_WIDTH * currentImg, speed);
 			}
-
-
 			function nextImage() {
 				if(currentImg != maxImages-1) {
               				currentImg = Math.min(currentImg + 1, maxImages - 1);
@@ -122,12 +92,9 @@
 						
 			        } 
 		        }
-
 			function scrollImages(distance, duration) {
 				cards.css("-webkit-transition-duration", (duration / 1000).toFixed(1) + "s");
-
 				//inverse the number we set in the css
-
             			var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
 			        cards.css("-webkit-transform", "translate3d(" + value + "px,0,0)");
 				  	cards.css("-webkit-transition", "-webkit-transform 0.4s linear");
@@ -138,20 +105,16 @@
 						});
 				
 		        }
-
 			function scrollImages2(distance, duration) {
 				content.css("-webkit-transition-duration", (duration / 1000).toFixed(1) + "s");
-
 				//inverse the number we set in the css
             			var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
 			        content.css("-webkit-transform", "translate3d(0," + value + "px,0)");
 		        }
-
 			function tofav() {
 			                scrollImages2(675, speed);
 					favorites = 1;
 		        }
-
 			function tomain() {
 			                scrollImages2(0, speed);
                                         favorites = 0;
@@ -381,10 +344,6 @@
                
 			</div>
 		</div>
-		<!--
-		<div class="successcopy" id="successcopy">
-		</div>
-		-->
 
 
 		<script type="text/javascript" src="js/hammer.js"></script>
@@ -395,7 +354,6 @@
  
 var myElement=document.querySelector("body");
 var mc = new Hammer(myElement);
-
 mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 mc.get('tap').set({ time: 8000 });
 mc.get('press').set({ time: 2000 });
@@ -405,97 +363,9 @@ mc.on("swiperight", function(ev) {
 mc.on("swipeleft", function(ev) {
   nextImage();
 });
- /*
-mc.on('tap', function(ev) {
-
-if(ev.deltaTime>2000){
-var element=ev.target.offsetParent;
-var txt=element.getAttribute('data-clipboard-text');
-
-//succeeded=copy(txt);
-succeeded=CopyToClipboard(txt);
-if(succeeded){
-console.log('copy');
-}
-
-}	
-});
-mc.on('press', function(ev) {
-  $('#successcopy').css('bottom','0');
-   setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
-});*/
-/*mc.on("swipedown", function(ev) {
-tomain();
-});
-mc.on("swipeup", function(ev) {
- tofav();
-});*/
-/*function copy(str){
-
-var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
- focus = document.activeElement; 
-var fakeElem   = document.createElement('textarea');
-fakeElem.style.fontSize = '12pt';
-fakeElem.style.border = '0';
-fakeElem.style.padding = '0';
-fakeElem.style.margin = '0';
-fakeElem.style.position = 'absolute';
-fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
- var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-fakeElem.addEventListener('focus', window.scrollTo(0, yPosition));
-fakeElem.style.top = yPosition + 'px';
-fakeElem.value = str;
-fakeElem.setAttribute('readonly', '');
- document.body.appendChild(fakeElem);
- fakeElem.focus(); 
-  fakeElem.select();
-   try {
-   succeeded = document.execCommand('copy'); 
-     } catch (err) {
-  succeeded = false;
-  }
-
-  return succeeded; //возвращаем удачно ли скопировалось
-}
-
-function CopyToClipboard (str) {
-
-var textToCb = str;
-var flag = true;
-
-          if (window.clipboardData) {
-                  window.clipboardData.setData ("Text", textToCb);
-				  alert(textToCb);
-               }
-         else {
-		 flag=copy(textToCb);
-       }
-return flag;
- }
- *//*
-mc.on('press', function(ev) {
- 			//	var clipboard = new Clipboard('.card');
-			//clipboard.on('success', function(e) {
-			    $('#successcopy').css('bottom','0');
-			    setTimeout(function(){$('#successcopy').css('bottom','-99px')}, 2000);
-			//});	
-			$('.card').trigger('click');
-///clipboard.onClick();
-});
-*/
-
-
-
-    </script>
+</script>
 		<script>
 			var clipboard = new Clipboard('.card');
-	clipboard.on('success', function(e) {
-		$(this).addClass("active"); 
-			   // $('.copyico').css('opacity','1');		
-			   // setTimeout(function(){$('.copyico').css('opacity','0')}, 2000);
-		//$('.copyico').addClass("active"); 
-		//setTimeout(function(){$('.copyico').removeClass('active')}, 2000);
-			});	
 		</script>
 
 	</body>
